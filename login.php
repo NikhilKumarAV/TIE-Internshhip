@@ -74,25 +74,23 @@ background: linear-gradient(to right, #EC6EAD, #3494E6);">
           $query = "insert into sign_up values('$name','$email','$password')";
           $query_run = mysqli_query($con, $query);
           if ($query_run) {
-            echo '<script>alert(
+            echo '<script type="text/javascript">alert( 
                             "Good job!",
                             "You are registered!",
                             "success");
+                            window.location = "login.php";
                   </script>';
-            header("Location: login.php");
           } else {
-            echo '<script>
+            echo '<script type="text/javascript">
                           alert(
-                            "Sorry",
-                            "Error",
-                            "error"
+                            "Sorry please try again"
                           )
+                          window.location = "login.php";
                           </script>';
-            header("Location: login.php");
           }
         }
       } else {
-        echo '<script>
+        echo '<script type="text/javascript">
 				alert(
 				  "Sorry",
 				  "Please enter valid information",
@@ -131,15 +129,15 @@ background: linear-gradient(to right, #EC6EAD, #3494E6);">
         $user_data = mysqli_fetch_assoc($query_run);
         $_SESSION['email'] = $user_data['email'];
 
-        echo '<script>
+        echo '<script type="text/javascript">
+                window.location = "index.php";
                 alert("Logged in Successfully")
                 </script>';
-        header("Location: index.php");
       } else {
-        echo '<script>
+        echo '<script type="text/javascript">
                 alert("Wrong email or password")
+                  window.location = "login.php";                
                 </script>';
-        header("Location: login.php");
       }
     }
     ?>

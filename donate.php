@@ -105,10 +105,11 @@ background: linear-gradient(to right, #EC6EAD, #3494E6);">
             $query = "insert into donate values('$first_name','$last_name','$email','$amount','$receipt_no')";
             $query_run = mysqli_query($con, $query);
             if ($query_run) {
-                echo '<script>alert("thank You for donating")</script>';
-                header("Location: donate_print.php");
+                echo '<script>alert("thank You for donating")
+                window.location = "donate_print.php";</script>';
             } else {
-                echo '<script>alert("Unable to donate")</script>';
+                echo '<script>alert("Unable to donate")
+                window.location = "donate.php";</script>';
             }
         }
     }
